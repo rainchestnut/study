@@ -1,0 +1,4 @@
+name = "demo"
+uuid = "cd4603af-e751-496e-82ab-d9510e8bd25a"
+authors = ["王冠 <wangguan@agilines.com>"]
+version = "0.1.0"
