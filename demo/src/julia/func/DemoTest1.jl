@@ -22,6 +22,7 @@ module DemoTest1
             end
             if ed == index
                 edIndex = nextIndex
+                break
             end
             nextIndex = nextind(s,nextIndex)
             if nextIndex == lastIndex
@@ -30,6 +31,6 @@ module DemoTest1
             end
             index = index + 1
         end
-        s[stIndex:edIndex]
+        return s[stIndex:edIndex]
     end
 end

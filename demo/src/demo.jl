@@ -12,9 +12,12 @@ julia>
 ```
 """
 module demo
-    modulePath = pwd() * "\\src\\julia"
-    push!(LOAD_PATH,modulePath)
-    println(modulePath)
+    function pathPush()
+        push!(LOAD_PATH,pwd() * "\\src\\julia\\func")
+        push!(LOAD_PATH,pwd() * "\\src\\julia\\until")
+        push!(LOAD_PATH,pwd() * "\\src\\julia\\main")
+    end
+    pathPush()
     using DemoTest1;
-    println(DemoTest1.getStringCut("受命于天既寿永昌",1,10));
+    println(DemoTest1.getStringCut("受命于天既寿永昌",1,6));
 end
