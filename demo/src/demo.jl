@@ -20,4 +20,5 @@ module demo
     pathPush()
     using DemoTest1;
     println(DemoTest1.getStringCut("受命于天既寿永昌",1,6));
+    readline()
 end
