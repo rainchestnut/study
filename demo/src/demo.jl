@@ -13,12 +13,25 @@ julia>
 """
 module demo
     function pathPush()
-        push!(LOAD_PATH,pwd() * "\\src\\julia\\func")
+        push!(LOAD_PATH,"src\\julia\\func")
         push!(LOAD_PATH,pwd() * "\\src\\julia\\until")
         push!(LOAD_PATH,pwd() * "\\src\\julia\\main")
+        push!(LOAD_PATH,pwd() * "\\resources")
     end
     pathPush()
+    const ROOT_DIR = normpath(joinpath(@__DIR__, ".."))
+    print(ROOT_DIR)
     using DemoTest1;
-    println(DemoTest1.getStringCut("受命于天既寿永昌",1,6));
-    readline()
+    # println(DemoTest1.getStringCut("受命于天既寿永昌",1,6));
+    # DemoTest1.readfileline(pwd() * "\\demo\\resources\\" * "Pride and Prejudice.txt");
+    # DemoTest1.readfileline("demo\\resources\\" * "Pride and Prejudice.txt");
+    # DemoTest1.getWordFrequency("demo\\resources\\" * "Pride and Prejudice.txt");
+    # @time println(DemoTest1.getCommonWord("demo\\resources\\" * "Pride and Prejudice.txt",10))
+    # @time println(DemoTest1.getCommonWord("demo\\resources\\" * "Pride and Prejudice.txt"))
+    using Plots
+    x = 1:10
+    y = x.^2
+    default(show = true)
+    plot(x,y)
+    pyplot()
 end
