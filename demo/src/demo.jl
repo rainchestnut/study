@@ -28,10 +28,7 @@ module demo
     # DemoTest1.getWordFrequency("demo\\resources\\" * "Pride and Prejudice.txt");
     # @time println(DemoTest1.getCommonWord("demo\\resources\\" * "Pride and Prejudice.txt",10))
     # @time println(DemoTest1.getCommonWord("demo\\resources\\" * "Pride and Prejudice.txt"))
-    using Plots
-    x = 1:10
-    y = x.^2
-    default(show = true)
-    plot(x,y)
-    pyplot()
+    wordCount = DemoTest1.getWordFrequency("demo\\resources\\" * "Pride and Prejudice.txt")
+    DemoTest1.sumarrayofstatistics(wordCount)
+
 end
