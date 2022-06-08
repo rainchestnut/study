@@ -12,7 +12,7 @@ julia>
 ```
 """
 module DemoTest1
-    export getStringCut,readfileline,getWordFrequency,sumarrayofstatistics
+    export getStringCut,readfileline,getWordFrequency,sumarrayofstatistics,getRandomWord
     function getStringCut(s::String ,st::Int,ed::Int)
         index = nextIndex = stIndex = edIndex =  1
         lastIndex::Int = lastindex(s);
@@ -79,15 +79,15 @@ module DemoTest1
     end
 
     function sumarrayofstatistics(wordCount:: Dict{String,Int})
-        wordSta = Array{Int}();
+        wordSta = Array{Int,1}();
         for v in values(wordCount)
-            push!(wordSta,last(wordSta,0) + v)
+            push!(wordSta,get(wordSta,lastindex(wordSta),0) + v)
         end
         return wordSta
     end
 
-    function getRandomWord(wordKeys::Array{String},wordSta::Array{Int})
-        sum(wordSta)
+    function getRandomWord(wordKeys::Array{String,1},wordSta::Array{Int,1},count::Int=sum(wordSta))
+        rand(1:count)
     end
     # readfileline(pwd() * "\\resources\\" * "Pride and Prejudice.txt")
 end

@@ -15,12 +15,11 @@ module demo
 const ROOT_DIR = normpath(joinpath(@__DIR__, ".."))
     function pathPush()
         push!(LOAD_PATH,joinpath(ROOT_DIR,"src\\julia\\func"))
-        push!(LOAD_PATH,pwd() * "\\src\\julia\\until")
-        push!(LOAD_PATH,pwd() * "\\src\\julia\\main")
-        push!(LOAD_PATH,pwd() * "\\resources")
+        push!(LOAD_PATH,joinpath(ROOT_DIR,"\\src\\julia\\until"))
+        push!(LOAD_PATH,joinpath(ROOT_DIR,"\\src\\julia\\main"))
+        push!(LOAD_PATH,joinpath(ROOT_DIR,"\\resources"))
     end
     pathPush()
-    print(ROOT_DIR)
     using DemoTest1;
     # println(DemoTest1.getStringCut("受命于天既寿永昌",1,6));
     # DemoTest1.readfileline(pwd() * "\\demo\\resources\\" * "Pride and Prejudice.txt");
@@ -29,5 +28,8 @@ const ROOT_DIR = normpath(joinpath(@__DIR__, ".."))
     # @time println(DemoTest1.getCommonWord("demo\\resources\\" * "Pride and Prejudice.txt",10))
     # @time println(DemoTest1.getCommonWord("demo\\resources\\" * "Pride and Prejudice.txt"))
     wordCount = DemoTest1.getWordFrequency("demo\\resources\\" * "Pride and Prejudice.txt")
-    DemoTest1.sumarrayofstatistics(wordCount)
+    wordSta = DemoTest1.sumarrayofstatistics(wordCount)
+    wordKeys = [keys(wordCount)...]
+    randomWord = DemoTest1.getRandomWord(wordKeys , wordSta)
+    print(randomWord)
 end
