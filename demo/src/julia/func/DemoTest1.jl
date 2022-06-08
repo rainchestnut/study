@@ -86,17 +86,14 @@ module DemoTest1
         return wordSta
     end
 
-    function getRandomWord(wordKeys::Array{String,1},wordSta::Array{Int,1},count::Int=sum(wordSta))
+    function getRandomWord(wordKeys::Array{String,1},wordSta::Array{Int,1},count::Int=last(wordSta))
         index = getArrayIndex(wordSta,rand(1:count));
-        println("index:"*string(index))
         return wordKeys[index]
     end
 
     function getArrayIndex(arr::Array{Int,1},rand::Int)
         index = (1,length(arr))
-        println(index)
         while index[2] - index[1] > 1
-            println(index)
             idx = (index[1] + index[2])÷2
             if arr[idx] > rand
                 index = (index[1],idx)
