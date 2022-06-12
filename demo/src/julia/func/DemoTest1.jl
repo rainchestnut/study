@@ -13,6 +13,13 @@ julia>
 """
 module DemoTest1
 export getStringCut, readfileline, getWordFrequency, sumarrayofstatistics, getRandomWord
+function getStringCut end
+function readfileline end
+function getWordFrequency end
+function getCommonWord end
+function sumarrayofstatistics end
+function getRandomWord end
+function getArrayIndex end
 function getStringCut(s::String, st::Int, ed::Int)
     index = nextIndex = stIndex = edIndex = 1
     lastIndex::Int = lastindex(s)
