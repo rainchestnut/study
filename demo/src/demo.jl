@@ -36,8 +36,7 @@ const ROOT_DIR = normpath(joinpath(@__DIR__, ".."))
     # wordKeys = [keys(wordCount)...]
     # randomWord = DemoTest1.getRandomWord(wordKeys , wordSta)
     # println(randomWord)
-    DBUtil.init!()
-    dbconnect = DBUtil.getconnect("julia_study")
+    dbconnect = DBUtil.getconnect()
     sql = "select * from t_sys_user limit 10"
     dbiterator = DBInterface.execute(dbconnect,sql)
     for item in dbiterator
@@ -45,5 +44,5 @@ const ROOT_DIR = normpath(joinpath(@__DIR__, ".."))
             println("id:"* Tables.getcolumn(item,:id)) 
         end
     end
-    DBInterface.close(dbconnect)
+    DBUtil.close!(dbconnect)
 end
