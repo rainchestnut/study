@@ -7,6 +7,7 @@ struct SysUser
     userid::Int                                     #系统定义租户下用户ID
     businessuserid::Union{AbstractString,Missing}   #租户定义账户号
     username::Union{AbstractString,Missing}         #租户定义账户名
+    personname::Union{AbstractString,Missing}       #姓名
     email::Union{AbstractString,Missing}            #邮箱
     createtime::Union{Date,Missing}                 #Create Time
     createuser::Union{Int,Missing}                  #创建人,系统主键ID
