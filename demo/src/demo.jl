@@ -25,6 +25,7 @@ const ROOT_DIR = normpath(joinpath(@__DIR__, ".."))
     using MySQL
     using Tables
     using DBUtil
+    using DBStudy
     # println(DemoTest1.getStringCut("受命于天既寿永昌",1,6));
     # DemoTest1.readfileline(pwd() * "\\demo\\resources\\" * "Pride and Prejudice.txt");
     # DemoTest1.readfileline("demo\\resources\\" * "Pride and Prejudice.txt");
@@ -36,13 +37,7 @@ const ROOT_DIR = normpath(joinpath(@__DIR__, ".."))
     # wordKeys = [keys(wordCount)...]
     # randomWord = DemoTest1.getRandomWord(wordKeys , wordSta)
     # println(randomWord)
-    dbconnect = DBUtil.getconnect()
     sql = "select * from t_sys_user limit 10"
-    dbiterator = DBInterface.execute(dbconnect,sql)
-    for item in dbiterator
-        if Base.haskey(item,:id)
-            println("id:"* Tables.getcolumn(item,:id)) 
-        end
-    end
-    DBUtil.close!(dbconnect)
+    result = DBUtil.querylist("julia_study",sql;dt=DBStudy.SysUser)
+    println(result)
 end
