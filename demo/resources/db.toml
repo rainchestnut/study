@@ -1,0 +1,3 @@
+[julia_study]
+modu = "MySQL"
+conn = 'DBInterface.connect(MySQL.Connection, "49.233.210.114", "rain", "RainChestnut", db="julia_study")'
