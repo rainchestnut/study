@@ -76,11 +76,10 @@ function queryone(sql::AbstractString, param::Dict{}, connstr::AbstractString=[k
         close!(dbconnect)
     end
 end
-function getconnect(key::AbstractString=[keys(dbmap)...][1])
+function getconnect(key::AbstractString=[keys(dbmap)...][1])::DBInterface.Connection
     conn = dbmap[key].conn
     eva = Meta.parse(conn)
-    println(eva)
-    eval(eva)
+    @time eval(eva)
 end
 function buildstmt(sql::AbstractString, param::Dict{AbstractString,Any}, conn::DBInterface.Connection)
     matcher = eachmatch(r"#{(.*?)}", sql)
