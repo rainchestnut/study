@@ -1,6 +1,8 @@
 module DBStudy
 using Dates
-using MySQL
+
+export SysUser
+
 struct SysUser
     id::Int
     tenantid::Int                                   # 租户ID
