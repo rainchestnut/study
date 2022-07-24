@@ -1,3 +1,4 @@
+__precompile__()
 module DBUtil
 using Pkg
 using TOML
