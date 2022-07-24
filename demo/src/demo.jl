@@ -21,9 +21,9 @@ function pathPush()
     push!(LOAD_PATH, joinpath(ROOT_DIR, "resources"))
 end
 pathPush()
-using DemoTest1
-using DBUtil
-using DBStudy
+# using DemoTest1
+# include("julia/util/DBUtil.jl")
+# using DBStudy
 # println(DemoTest1.getStringCut("受命于天既寿永昌",1,6));
 # DemoTest1.readfileline(pwd() * "\\demo\\resources\\" * "Pride and Prejudice.txt");
 # DemoTest1.readfileline("demo\\resources\\" * "Pride and Prejudice.txt");
@@ -35,10 +35,27 @@ using DBStudy
 # wordKeys = [keys(wordCount)...]
 # randomWord = DemoTest1.getRandomWord(wordKeys , wordSta)
 # println(randomWord)
-sql = "update t_sys_user set remark = #{remark} where id = #{id}"
-@time result = DBUtil.update(sql, Dict{AbstractString,Any}("remark" => "系统用户", "id" => "1"))
-println(result)
-sql1 = "select * from t_sys_user where id = 1 limit 10"
-@time result1 = DBUtil.queryone(sql1, Dict{AbstractString,Any}(), dt=DBStudy.SysUser)
-println(result1)
+# sql = "update t_sys_user set remark = #{remark} where id = #{id}"
+# @time result = DBUtil.update(sql, Dict{AbstractString,Any}("remark" => "系统用户", "id" => "1"))
+# println(result)
+# sql1 = "select * from t_sys_user where id = 1 limit 10"
+# @time result1 = DBUtil.queryone(sql1, Dict{AbstractString,Any}(), dt=DBStudy.SysUser)
+# println(result1)
+
+# trait 模式
+# using SimpleTraits
+# @traitdef isNice{T}
+# @traitimpl isNice{Union{Int,String} }
+# @traitfn fs(x::X) where {X;isNice{X}} = "nice"
+# @traitfn fs(x::X) where {X;!isNice{X}} = "nice too"
+# println(fs("ces"))
+
+struct TraitNice end
+struct TraitNotNice end
+fspdef(::Int) = TraitNice()
+fspdef(::Any) = TraitNotNice()
+fspimpl(x,::TraitNice) = "nice";
+fspimpl(x,::Any) = "ces"
+fsp(x) = fspimpl(x,fspdef(x))
+println(fsp(2))
 end
